@@ -1,0 +1,540 @@
+{
+  "paragraphs": [
+    {
+      "text": "// Load JDBC dependency\n%spark.dep\nz.load(\"org.postgresql:postgresql:42.2.5\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:04.556",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cconsole\u003e:3: error: \u0027;\u0027 expected but \u0027.\u0027 found.\n%spark.dep\n      ^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570406614221_390028672",
+      "id": "20191007-000334_1007918",
+      "dateCreated": "2019-10-07 00:03:34.221",
+      "dateStarted": "2019-10-07 02:11:52.048",
+      "dateFinished": "2019-10-07 02:11:52.054",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//IMPORT EVERYTHING NEEDED\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.functions.typedLit\nimport java.util.Properties\nimport org.apache.hadoop.conf.Configuration\nimport org.apache.spark.SparkContext\nimport org.apache.spark.SparkConf\nimport org.postgresql.Driver\nimport org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SQLContext}\nimport org.apache.spark.{SparkConf, SparkContext}",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:04.682",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.functions.typedLit\nimport java.util.Properties\nimport org.apache.hadoop.conf.Configuration\nimport org.apache.spark.SparkContext\nimport org.apache.spark.SparkConf\nimport org.postgresql.Driver\nimport org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}\nimport org.apache.spark.sql.{Row, SQLContext}\nimport org.apache.spark.{SparkConf, SparkContext}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570414290517_1428331015",
+      "id": "20191007-021130_412672923",
+      "dateCreated": "2019-10-07 02:11:30.517",
+      "dateStarted": "2019-10-07 02:11:56.089",
+      "dateFinished": "2019-10-07 02:11:56.918",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// START SPARK SESSION\nval spark \u003d SparkSession.builder.appName(\"Spark Posts\").config(\"spark.master\", \"local\").getOrCreate()\nimport spark.implicits._\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:04.795",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "spark: org.apache.spark.sql.SparkSession \u003d org.apache.spark.sql.SparkSession@621b10d1\nimport spark.implicits._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570414303215_-1165776075",
+      "id": "20191007-021143_1049044855",
+      "dateCreated": "2019-10-07 02:11:43.215",
+      "dateStarted": "2019-10-07 02:12:06.103",
+      "dateFinished": "2019-10-07 02:12:06.762",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// READ ALL DATA FROM DATABASE\n// Setup connection to database\nval jdbcUrl \u003d \"jdbc:postgresql://35.239.57.52/shared-world-database\"\nval connectionProperties \u003d new Properties()\nconnectionProperties.put(\"user\", \"postgres\")\nconnectionProperties.put(\"password\", \"contiki123\")\nconnectionProperties.setProperty(\"Driver\", \"org.postgresql.Driver\")\n\n// Show all tables in database\n//spark.read.jdbc(jdbcUrl, \"information_schema.tables\", connectionProperties).show()",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:04.971",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "jdbcUrl: String \u003d jdbc:postgresql://35.239.57.52/shared-world-database\nconnectionProperties: java.util.Properties \u003d {}\nres233: Object \u003d null\nres234: Object \u003d null\nres235: Object \u003d null\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570408965922_-1102004257",
+      "id": "20191007-004245_327879382",
+      "dateCreated": "2019-10-07 00:42:45.923",
+      "dateStarted": "2019-10-07 02:11:03.213",
+      "dateFinished": "2019-10-07 02:11:03.822",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "MOST POSTS (BY COUNTRY)",
+      "text": "// Df of all posts grouped and ordered in desc for each country\nval all_posts \u003d spark.read.jdbc(jdbcUrl, \"post_post\", connectionProperties).groupBy(\"country_id\").count().sort($\"count\".desc)\nz.show(all_posts)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:05.077",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "country_id": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "country_id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "all_posts: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] \u003d [country_id: string, count: bigint]\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "country_id\tcount\nAU\t4\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://cluster-2-m.us-central1-a.c.shared-world.internal:4040/jobs/job?id\u003d122"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570409219675_1089021256",
+      "id": "20191007-004659_1727165334",
+      "dateCreated": "2019-10-07 00:46:59.675",
+      "dateStarted": "2019-10-07 02:11:09.953",
+      "dateFinished": "2019-10-07 02:11:10.913",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "TOP INTERESTS (BY USERS)",
+      "text": "//Create df of tags for all posts\nval tagged_users \u003d spark.read.jdbc(jdbcUrl, \"taggit_taggeditem\", connectionProperties).filter($\"content_type_id\" \u003d\u003d\u003d 10).select($\"object_id\", $\"tag_id\").toDF(\"user_id\", \"tag_id\")\n\n// Create df of tag names\nval tags \u003d spark.read.jdbc(jdbcUrl, \"taggit_tag\", connectionProperties).select($\"id\",$\"name\").toDF(\"tag_id\", \"tag_name\").join(tagged_users, \"tag_id\").groupBy(\"tag_name\").count().sort($\"count\".desc)\n\nz.show(tags)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:10.585",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "tag_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "tagged_users: org.apache.spark.sql.DataFrame \u003d [user_id: int, tag_id: int]\ntags: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] \u003d [tag_name: string, count: bigint]\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "tag_name\tcount\nhiking\t3\nski\t2\nfood\t1\ncoffee\t1\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://cluster-2-m.us-central1-a.c.shared-world.internal:4040/jobs/job?id\u003d123"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570413177301_-1787002344",
+      "id": "20191007-015257_1334553737",
+      "dateCreated": "2019-10-07 01:52:57.301",
+      "dateStarted": "2019-10-07 02:11:15.091",
+      "dateFinished": "2019-10-07 02:11:17.159",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1570426686992_2061774472",
+      "id": "20191007-053806_1480193998",
+      "dateCreated": "2019-10-07 05:38:06.992",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "TOP INTERESTS (FOR CHOSEN COUNTRY)",
+      "text": "// Choose the country to view:\nval country \u003d \"AU\"\n\n\n//Create df of tags for all posts\nval tagged_posts \u003d spark.read.jdbc(jdbcUrl, \"taggit_taggeditem\", connectionProperties).filter($\"content_type_id\" \u003d\u003d\u003d 9).select($\"object_id\", $\"tag_id\").toDF(\"post_id\", \"tag_id\")\n\n// Create df of tag names\nval tags \u003d spark.read.jdbc(jdbcUrl, \"taggit_tag\", connectionProperties).select($\"id\",$\"name\").toDF(\"tag_id\", \"tag_name\").join(tagged_posts, \"tag_id\")\n\n// Create df of posts with countryid and tag_id and tag name\nval posts \u003d spark.read.jdbc(jdbcUrl, \"post_post\", connectionProperties).select($\"id\",$\"country_id\").toDF(\"post_id\", \"country_id\").join(tags, \"post_id\")\n\n//Iterate over each country\nval country_posts \u003d posts.filter($\"country_id\" \u003d\u003d\u003d country).groupBy(\"tag_name\").count().sort($\"count\".desc)\nz.show(country_posts)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:19.264",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "country: String \u003d AU\ntagged_posts: org.apache.spark.sql.DataFrame \u003d [post_id: int, tag_id: int]\ntags: org.apache.spark.sql.DataFrame \u003d [tag_id: int, tag_name: string ... 1 more field]\nposts: org.apache.spark.sql.DataFrame \u003d [post_id: int, country_id: string ... 2 more fields]\ncountry_posts: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] \u003d [tag_name: string, count: bigint]\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "tag_name\tcount\nhiking\t2\ncoffee\t2\nski\t1\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://cluster-2-m.us-central1-a.c.shared-world.internal:4040/jobs/job?id\u003d124"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570410413695_-819335351",
+      "id": "20191007-010653_859532523",
+      "dateCreated": "2019-10-07 01:06:53.695",
+      "dateStarted": "2019-10-07 02:11:20.346",
+      "dateFinished": "2019-10-07 02:11:23.760",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "TOP INTERESTS (FOR COUNTRIES)",
+      "text": "// Create list of countries\nval country_list \u003d spark.read.jdbc(jdbcUrl, \"country_country\", connectionProperties).select($\"country\").rdd.map(r \u003d\u003e r(0)).collect().toList\n\n\n//Create df of tags for all posts\nval tagged_posts \u003d spark.read.jdbc(jdbcUrl, \"taggit_taggeditem\", connectionProperties).filter($\"content_type_id\" \u003d\u003d\u003d 9).select($\"object_id\", $\"tag_id\").toDF(\"post_id\", \"tag_id\")\n\n// Create df of tag names\nval tags \u003d spark.read.jdbc(jdbcUrl, \"taggit_tag\", connectionProperties).select($\"id\",$\"name\").toDF(\"tag_id\", \"tag_name\").join(tagged_posts, \"tag_id\")\n\n// Create df of posts with countryid and tag_id and tag name\nval posts \u003d spark.read.jdbc(jdbcUrl, \"post_post\", connectionProperties).select($\"id\",$\"country_id\").toDF(\"post_id\", \"country_id\").join(tags, \"post_id\")\n\n\n//Iterate over each country\nfor (country \u003c- country_list) {\n    val country_posts \u003d posts.filter($\"country_id\" \u003d\u003d\u003d country).groupBy(\"tag_name\").count().sort($\"count\".desc)\n    z.show(country_posts)\n}",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-07 05:38:42.293",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "country_list: List[Any] \u003d List(AU)\ntagged_posts: org.apache.spark.sql.DataFrame \u003d [post_id: int, tag_id: int]\ntags: org.apache.spark.sql.DataFrame \u003d [tag_id: int, tag_name: string ... 1 more field]\nposts: org.apache.spark.sql.DataFrame \u003d [post_id: int, country_id: string ... 2 more fields]\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "tag_name\tcount\nhiking\t2\ncoffee\t2\nski\t1\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://cluster-2-m.us-central1-a.c.shared-world.internal:4040/jobs/job?id\u003d125",
+            "http://cluster-2-m.us-central1-a.c.shared-world.internal:4040/jobs/job?id\u003d126"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570409661613_1875706534",
+      "id": "20191007-005421_607525737",
+      "dateCreated": "2019-10-07 00:54:21.613",
+      "dateStarted": "2019-10-07 02:18:20.731",
+      "dateFinished": "2019-10-07 02:18:24.228",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "shared-world-analysis",
+  "id": "2EQQK7UYU",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "angular:shared_process": [],
+    "jdbc:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
