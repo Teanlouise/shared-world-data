@@ -22,7 +22,7 @@ object SparkPosts {
 
     // Define paramaters
     var country = ""
-    var user = 0
+    val user = 0
 
     // READ ALL DATA FROM DATABASE
     // Setup connection to database
@@ -102,13 +102,9 @@ object SparkPosts {
 
         // Select required information for posts and write as json
         val post_match = spark
-          .sql("SELECT * FROM post_info JOIN post_order USING (id)")
+          .sql("SELECT * FROM post_order JOIN post_info USING (id) ORDER BY count desc")
           .repartition(1)
           .write.json(s"gs://shared-world-dataproc/order/${user}/${country}")
-          //.save.json(s"gs://shared-world-dataproc/order/${user}/${country}")
-          //.write.format("org.apache.spark.sql.json")
-          //.mode("append").save(s"gs://shared-world-dataproc/order/${user}/${country}")
-
 
         // Configure to rename file to results.json
         import org.apache.hadoop.fs._

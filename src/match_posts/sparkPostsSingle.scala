@@ -68,7 +68,6 @@ object SparkPosts {
       val country_posts = all_posts
         .filter($"country_id" === country)
 
-
       // Create view of interests for this user
       val user_interests = tagged_user
         .filter($"object_id" === user)
@@ -101,13 +100,9 @@ object SparkPosts {
 
       // Select required information for posts and write as json
       val post_match = spark
-        .sql("SELECT * FROM post_info JOIN post_order USING (id)")
+        .sql("SELECT * FROM post_order JOIN post_info USING (id) ORDER BY count desc")
         .repartition(1)
         .write.json(s"gs://shared-world-dataproc/order/${user}/${country}")
-        //.save.json(s"gs://shared-world-dataproc/order/${user}/${country}")
-        //.write.format("org.apache.spark.sql.json")
-        //.mode("append").save(s"gs://shared-world-dataproc/order/${user}/${country}")
-
 
       // Configure to rename file to results.json
       import org.apache.hadoop.fs._
@@ -117,7 +112,6 @@ object SparkPosts {
       val filePath = s"gs://shared-world-dataproc/order/${user}/${country}/"
       val fileName = fs.globStatus(new Path(filePath+"part*"))(0).getPath.getName
       fs.rename(new Path(filePath+fileName), new Path(filePath+"result.json"))
-
     }
   }
 }
