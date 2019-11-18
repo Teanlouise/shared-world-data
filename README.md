@@ -17,9 +17,9 @@ Use Spark and scala to perform general data analysis of the data in Zeppelin not
 
 # TOURIST-TO-RESIDENT RATIO 
 
-![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
-
 _BigQuery, GoogleMapsAPI-GeoChart_
+
+![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
 
 Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/indicator/SP.POP.TOTL) and calculate the [tourist-to-local ratio](https://www.un.org/esa/sustdev/natlinfo/indicators/methodology_sheets/demographics/ratio_localresidents_tourists.pdf) for all countries in 2017 to be displayed on the homepage of the shared-world app using Google Maps API
 
@@ -34,11 +34,12 @@ Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/ind
 
   
 # LINEAR REGRESSION MODEL
+
+![linear_regression](https://user-images.githubusercontent.com/19520346/69103645-aca1de80-0ab1-11ea-9e13-6cbb79e203f6.png)
+
 Create a linear regression model using table of factors generated from the WorldBank dataset using BigQuery in Jupyter with pyspark.
 
 ## Regression Input
-
-![linear_regression](https://user-images.githubusercontent.com/19520346/69103645-aca1de80-0ab1-11ea-9e13-6cbb79e203f6.png)
 
 _BigQuery, WorkBank public dataset_
 
