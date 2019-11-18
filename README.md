@@ -2,7 +2,9 @@ This is all of the Big Data aspects of the shared-world project.
 
 # DATA ANALYSIS 
 
-~ Dataproc |  Zeppelin | JDB | Scala | Spark ~
+![data_analysis](https://user-images.githubusercontent.com/19520346/69103639-a875c100-0ab1-11ea-8ec9-6a834d80fee8.png)
+
+~ Dataproc, Zeppelin, JDBC, Scala, Spark ~
 
 Use Spark and scala to perform general data analysis of the data in Zeppelin notebook on Dataproc cluster.
 
@@ -14,6 +16,8 @@ Use Spark and scala to perform general data analysis of the data in Zeppelin not
 
 
 # TOURIST-TO-RESIDENT RATIO 
+
+![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
 
 _BigQuery, GoogleMapsAPI-GeoChart_
 
@@ -33,6 +37,8 @@ Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/ind
 Create a linear regression model using table of factors generated from the WorldBank dataset using BigQuery in Jupyter with pyspark.
 
 ## Regression Input
+
+![linear_regression](https://user-images.githubusercontent.com/19520346/69103645-aca1de80-0ab1-11ea-9e13-6cbb79e203f6.png)
 
 _BigQuery, WorkBank public dataset_
 
@@ -61,6 +67,8 @@ Create a linear regression model using input populated by a table in BigQuery.
 
 
 # MATCH POSTS TO USER INTERESTS
+
+![match_posts](https://user-images.githubusercontent.com/19520346/69103654-b297bf80-0ab1-11ea-8061-a6bf9b437f27.png)
 
 _IntelliJ, Dataproc, JDBC, Scala, SparkSQL_
 
