@@ -30,12 +30,19 @@ connectionProperties.setProperty("Driver", "org.postgresql.Driver")
 //spark.read.jdbc(jdbcUrl, "information_schema.tables", connectionProperties).show()
 
 
-MOST POSTS BY COUNTRY
+MOST POSTS (BY COUNTRY)
 // Df of all posts grouped and ordered in desc for each country
 val all_posts = spark.read.jdbc(jdbcUrl, "post_post", connectionProperties).groupBy("country_id").count().sort($"count".desc)
 z.show(all_posts)
 
+TOP INTERESTS (BY POSTS)
+//Create df of tags for all posts
+val tagged_posts = spark.read.jdbc(jdbcUrl, "taggit_taggeditem", connectionProperties).filter($"content_type_id" === 9).select($"object_id", $"tag_id").toDF("post_id", "tag_id")
 
+// Create df of tag names
+val tags = spark.read.jdbc(jdbcUrl, "taggit_tag", connectionProperties).select($"id",$"name").toDF("tag_id", "tag_name").join(tagged_posts, "tag_id").groupBy("tag_name").count().sort($"count".desc)
+
+z.show(tags)
 
 TOP INTERESTS (BY USERS)
 //Create df of tags for all posts
