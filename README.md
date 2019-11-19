@@ -3,10 +3,10 @@
 [Overview](https://teanlouise.github.io/shared-world)     |     [Develop](https://teanlouise.github.io/shared-world/develop)    |  [Deploy](https://teanlouise.github.io/shared-world/deploy)    |   [Data](https://teanlouise.github.io/shared-world-data)
 
 This is all of the Big Data aspects of the shared-world project. This includes:
-- [Data Analysis](https://teanlouise.github.io/shared-world-data/src/data_analysis)
-- [Match posts to user interests](https://teanlouise.github.io/shared-world-data/src/match_posts)
-- [Map of tourist-resident ratio](https://teanlouise.github.io/shared-world-data/src/2017_ratio)
-- [Linear Regression Model](https://teanlouise.github.io/shared-world-data/src/linear_regression)
+- **[Data Analysis](https://teanlouise.github.io/shared-world-data/src/data_analysis)**: scala code and zeppelin notebook of Spark programming
+- **[Match posts to user interests](https://teanlouise.github.io/shared-world-data/src/match_posts)**: scala jar files to output post ordered by user interests using SparkSQL
+- **[Map of tourist-resident ratio](https://teanlouise.github.io/shared-world-data/src/2017_ratio):** the sql queries and table for the interactive map
+- **[Linear Regression Model](https://teanlouise.github.io/shared-world-data/src/linear_regression):** pyspark code and jupyter notebook to create linear regressional model using SparkML
 
 ![part_3_data](https://user-images.githubusercontent.com/19520346/69108540-b121c380-0ac0-11ea-9577-55a4eae5fd28.png)
 
