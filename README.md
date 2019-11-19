@@ -4,7 +4,7 @@ This is all of the Big Data aspects of the shared-world project.
 
 ![data_analysis](https://user-images.githubusercontent.com/19520346/69103639-a875c100-0ab1-11ea-8ec9-6a834d80fee8.png)
 
-~ Dataproc, Zeppelin, JDBC, Scala, Spark ~
+_Google BigQuery, Zepplin Notebook, Google Cloud Dataproc, Apache Spark, Scala, JDBC_
 
 Use Spark and scala to perform general data analysis of the data in Zeppelin notebook on Dataproc cluster.
 
@@ -13,13 +13,11 @@ Use Spark and scala to perform general data analysis of the data in Zeppelin not
 3. Top interests of country
 4. Top interests of all countries
 
-
-
 # TOURIST-TO-RESIDENT RATIO 
 
 ![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
 
-_~ BigQuery, GoogleMapsAPI-GeoChart ~_
+_World Bank, Google BigQuery, Google Cloud Storage, GoogleMapsAPI-GeoChart_
 
 Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/indicator/SP.POP.TOTL) and calculate the [tourist-to-local ratio](https://www.un.org/esa/sustdev/natlinfo/indicators/methodology_sheets/demographics/ratio_localresidents_tourists.pdf) for all countries in 2017 to be displayed on the homepage of the shared-world app using Google Maps API
 
@@ -31,7 +29,6 @@ Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/ind
 2. tourism.sql - Get the "International tourism, number of arrivals" from the indicator data for all countries and years available.
 3. ratio_tourism_pop.sql - Join these two views for all countries that have both data and create a column for the percentage and the 1 local to resident ratio. 
 4. Create a table using this view and filter by the latest year (2017) and order by the highest percentage in descending.
-
   
 # LINEAR REGRESSION MODEL
 
@@ -41,7 +38,7 @@ Create a linear regression model using table of factors generated from the World
 
 ## Regression Input
 
-_~ BigQuery, WorkBank public dataset ~_
+_World Bank, Google BigQuery, SQL_
 
 Populate a table in BigQuery of all countries with all relevant factors, from the [World Bank indicator table](https://data.worldbank.org/indicator/SP.POP.TOTL), to create input for a linear regression model.
 
@@ -55,7 +52,7 @@ Inspiration from LogisticRegression example in INFS3208 lecture on machine learn
 
 ## Regression Ouput
 
-_~ Jupyter, Dataproc, pyspark, SparkMlib ~_
+_Google BigQuery, Jupyter Notebook, Google Dataproc, Apache Spark, SparkMlib, pyspark_
 
 Create a linear regression model using input populated by a table in BigQuery.
 
@@ -71,7 +68,7 @@ Create a linear regression model using input populated by a table in BigQuery.
 
 ![match_posts](https://user-images.githubusercontent.com/19520346/69103654-b297bf80-0ab1-11ea-8061-a6bf9b437f27.png)
 
-_~ IntelliJ, Dataproc, JDBC, Scala, SparkSQL ~_
+_Google CloudSQL, IntelliJ, Google Cloud Storage, Google Dataproc, JDBC, Scala, SparkSQL_
 
 Write a Spark Program in scala to run on Dataproc, that outputs a JSON file for every user and every country,
 with the posts ordered by most matching interests in descending order.
