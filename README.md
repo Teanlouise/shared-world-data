@@ -1,6 +1,12 @@
 ![data_shared](https://user-images.githubusercontent.com/19520346/69123547-61a5bc80-0aed-11ea-983c-2a2bd3ab0888.PNG)
 
-This is all of the Big Data aspects of the shared-world project.
+This is all of the Big Data aspects of the shared-world project. This includes:
+- Data Analysis
+- Match posts to user interests
+- Map of tourist-resident ratio
+- Linear Regression Model
+
+![part_3_data](https://user-images.githubusercontent.com/19520346/69108540-b121c380-0ac0-11ea-9577-55a4eae5fd28.png)
 
 **Getting Started**
 
