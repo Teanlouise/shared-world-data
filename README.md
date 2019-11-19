@@ -2,13 +2,23 @@ This is all of the Big Data aspects of the shared-world project.
 
 **Getting Started**
 
-- Setup Dataproc cluster
+(1) Setup Dataproc cluster
 
 ![dataproc](https://user-images.githubusercontent.com/19520346/69104843-651d5180-0ab5-11ea-9b37-7b2d4aba4a19.png)
 
-- [Enable BigQuery API](https://data.worldbank.org/indicator/SP.POP.TOTL)
+(2) [Enable BigQuery API](https://data.worldbank.org/indicator/SP.POP.TOTL)
 
 ![bigquery](https://user-images.githubusercontent.com/19520346/69105029-e2e15d00-0ab5-11ea-8dd3-35ff254e66ea.png)
+
+(3) Dataproc Cluster for notebooks
+-	Create cluster on Dataproc
+-	Enable component gateway
+-	Add path to bucket for outputs
+-	Add Anaconda, Jupyter and Zeppelin notebook
+-	Once created created go to Web Interface tab and select notebook
+-	Once open select the desired kernel
+
+![zeppelin](https://user-images.githubusercontent.com/19520346/69106832-4f128f80-0abb-11ea-9681-d8b6f26d0b68.png)
 
 # DATA ANALYSIS 
 
@@ -19,9 +29,29 @@ _Google BigQuery, Zepplin Notebook, Google Cloud Dataproc, Apache Spark, Scala, 
 Use Spark and scala to perform general data analysis of the data in Zeppelin notebook on Dataproc cluster.
 
 1. Number of posts in each country
-2. Top interest of users
-3. Top interests of country
-4. Top interests of all countries
+
+![mostposts](https://user-images.githubusercontent.com/19520346/69106724-f9d67e00-0aba-11ea-88b5-1ba298b9d840.png)
+
+2. Top interests of country
+
+![topinterestscountry](https://user-images.githubusercontent.com/19520346/69106726-fa6f1480-0aba-11ea-8ef7-c6f04e227ea0.png)
+
+3. Top interest of users
+
+![topinterestsusers](https://user-images.githubusercontent.com/19520346/69106727-fa6f1480-0aba-11ea-86d2-97fe28252d96.png)
+
+4. Top interests of posts
+
+![topinterestsposts](https://user-images.githubusercontent.com/19520346/69106728-fa6f1480-0aba-11ea-8818-5f073a66d004.png)
+
+### Code flow:
+1. Load JDBC dependency
+2. Import everything needed and start Spark Session
+3. Setup connection to database
+4. Go through each of the four analysis
+- save data from database into dataframe and perform aggregation
+- use z.show() to display results with Zeppelin tool
+
 
 # TOURIST-TO-RESIDENT RATIO 
 
@@ -29,50 +59,59 @@ Use Spark and scala to perform general data analysis of the data in Zeppelin not
 
 _World Bank, Google BigQuery, Google Cloud Storage, GoogleMapsAPI-GeoChart_
 
-Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/indicator/SP.POP.TOTL) and calculate the [tourist-to-local ratio](https://www.un.org/esa/sustdev/natlinfo/indicators/methodology_sheets/demographics/ratio_localresidents_tourists.pdf) for all countries in 2017 to be displayed on the homepage of the shared-world app using Google Maps API
+Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/indicator/SP.POP.TOTL) and calculate the [tourist-to-local ratio](https://www.un.org/esa/sustdev/natlinfo/indicators/methodology_sheets/demographics/ratio_localresidents_tourists.pdf) for all countries in 2017 to be displayed on the homepage of the shared-world app using Google Maps API.
 
 - Ratio: (tourist arrivals / population)
 - Percentage: Ratio * 100
 
-**Steps**    
-1. population.sql - Get the "Populaion, total" from the indicator data for all countries and years available.
-2. tourism.sql - Get the "International tourism, number of arrivals" from the indicator data for all countries and years available.
-3. ratio_tourism_pop.sql - Join these two views for all countries that have both data and create a column for the percentage and the 1 local to resident ratio. 
-4. Create a table using this view and filter by the latest year (2017) and order by the highest percentage in descending.
+### Steps  
+
+**(1) Get Ratio from WorldBank using BigQuery:**
+- Get the "Populaion, total" from the indicator data for all countries and years available.
+- Get the "International tourism, number of arrivals" from the indicator data for all countries and years available.
+- Join these two views for all countries that have both data and create a column for the percentage and the 1 local to resident ratio.
+
+**(2) Create and save table on Cloud Storage:**
+- Create a table using ratio view and filter by the latest year (2017) and order by the highest percentage in descending.
+- Save table by exporting as csv to Cloud Storage
+
+**(3) Display with GeoChart Map:**
+- Enable GeoChartAPI 
+- Enter data in [Google GeoChart in React](https://react-google-charts.com/data-sources/from-api)
+- Display [GeoChart](https://developers.google.com/chart/interactive/docs/gallery/geochart) map with countries coloured according to ratio
+
+![ratiooutput](https://user-images.githubusercontent.com/19520346/69106523-5dac7700-0aba-11ea-9d28-c799cfe8ab68.png)
+_snippet_
+
   
 # LINEAR REGRESSION MODEL
 
 ![linear_regression](https://user-images.githubusercontent.com/19520346/69103645-aca1de80-0ab1-11ea-9e13-6cbb79e203f6.png)
 
+_World Bank, Google BigQuery, SQL, Jupyter Notebook, Google Dataproc, Apache Spark, SparkMlib, pyspark_
+
 Create a linear regression model using table of factors generated from the WorldBank dataset using BigQuery in Jupyter with pyspark.
 
-## Regression Input
+### Steps:
 
-_World Bank, Google BigQuery, SQL_
-
+**(1) Get regression input data:**
 Populate a table in BigQuery of all countries with all relevant factors, from the [World Bank indicator table](https://data.worldbank.org/indicator/SP.POP.TOTL), to create input for a linear regression model.
+- Compile view of all countries with any of the desired indicators from the WorldBank dataset
+- Create seperate view for each indicator
+- Combine all these views together so that the only countries selected have an entry in all the views (ie.have all the factors)
+- Save as a table in BigQuert to be accessed by dataproc regression_input
 
-Inspiration from LogisticRegression example in INFS3208 lecture on machine learning and [gestation example](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml) from Google.
- 
-**Steps**
-1. country_data.sql - Compile view of all countries with any of the factors from the WorldBank dataset
-2. .....query2....sql - Create single view for each factor from country_data view
-3. all_factors.sql - Create a view of countries that have an entry in all of the views from step 2 (i.e. have all factors)
-4. regression_input - save as a table to be accessed by dataproc
+**(2) Setup Jupyter notebook:**
+Create a Dataproc cluster and install Jupyter notebook component
 
-## Regression Ouput
-
-_Google BigQuery, Jupyter Notebook, Google Dataproc, Apache Spark, SparkMlib, pyspark_
-
-Create a linear regression model using input populated by a table in BigQuery.
-
-**Steps**
-1. Create a Dataproc cluster and install Jupyter notebook component
-2. Code using pyspark component
-3. Use BigQuery connector to retrieve data as a Panda DataFrame
-4. Convert to Spark DF and train model similar to Google example
-5. Create model with train and test data similar to lecture example
-
+**(3) Create regression model:**
+Create a linear regression model using input populated by a table in BigQuery in Jupyter Notebook with pyspark.
+- Create vector for inputs 
+- Use Big Query connector to read data from BigQuery
+- Conver from Panda DataFrame to Spark Dataframe
+- Create clean input dataframe for SparkML using vector function
+- Construct new LinearRegression object and fit the training data to train similar to [Google gestation example](https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml)
+- Create model with train and test data (similar to LogisticRegression example in INFS3208 lecture on machine learning)
 
 # MATCH POSTS TO USER INTERESTS
 
