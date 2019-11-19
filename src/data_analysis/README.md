@@ -8,19 +8,19 @@ _Google BigQuery, Zepplin Notebook, Google Cloud Dataproc, Apache Spark, Scala, 
 
 Use Spark and scala to perform general data analysis of the data in Zeppelin notebook on Dataproc cluster.
 
-1. Number of posts in each country
+**(1) Number of posts in each country**
 
 ![mostposts](https://user-images.githubusercontent.com/19520346/69106724-f9d67e00-0aba-11ea-88b5-1ba298b9d840.png)
 
-2. Top interests of country
+**(2) Top interests of country**
 
 ![topinterestscountry](https://user-images.githubusercontent.com/19520346/69106726-fa6f1480-0aba-11ea-8ef7-c6f04e227ea0.png)
 
-3. Top interest of users
+**(3) Top interest of users**
 
 ![topinterestsusers](https://user-images.githubusercontent.com/19520346/69106727-fa6f1480-0aba-11ea-86d2-97fe28252d96.png)
 
-4. Top interests of posts
+**(4) Top interests of posts**
 
 ![topinterestsposts](https://user-images.githubusercontent.com/19520346/69106728-fa6f1480-0aba-11ea-8818-5f073a66d004.png)
 
