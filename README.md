@@ -17,9 +17,9 @@ Use Spark and scala to perform general data analysis of the data in Zeppelin not
 
 # TOURIST-TO-RESIDENT RATIO 
 
-_BigQuery, GoogleMapsAPI-GeoChart_
-
 ![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
+
+_~ BigQuery, GoogleMapsAPI-GeoChart ~_
 
 Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/indicator/SP.POP.TOTL) and calculate the [tourist-to-local ratio](https://www.un.org/esa/sustdev/natlinfo/indicators/methodology_sheets/demographics/ratio_localresidents_tourists.pdf) for all countries in 2017 to be displayed on the homepage of the shared-world app using Google Maps API
 
@@ -41,7 +41,7 @@ Create a linear regression model using table of factors generated from the World
 
 ## Regression Input
 
-_BigQuery, WorkBank public dataset_
+_~ BigQuery, WorkBank public dataset ~_
 
 Populate a table in BigQuery of all countries with all relevant factors, from the [World Bank indicator table](https://data.worldbank.org/indicator/SP.POP.TOTL), to create input for a linear regression model.
 
@@ -55,7 +55,7 @@ Inspiration from LogisticRegression example in INFS3208 lecture on machine learn
 
 ## Regression Ouput
 
-_Jupyter, Dataproc, pyspark, SparkMlib_
+_~ Jupyter, Dataproc, pyspark, SparkMlib ~_
 
 Create a linear regression model using input populated by a table in BigQuery.
 
@@ -71,7 +71,7 @@ Create a linear regression model using input populated by a table in BigQuery.
 
 ![match_posts](https://user-images.githubusercontent.com/19520346/69103654-b297bf80-0ab1-11ea-8061-a6bf9b437f27.png)
 
-_IntelliJ, Dataproc, JDBC, Scala, SparkSQL_
+_~ IntelliJ, Dataproc, JDBC, Scala, SparkSQL ~_
 
 Write a Spark Program in scala to run on Dataproc, that outputs a JSON file for every user and every country,
 with the posts ordered by most matching interests in descending order.
