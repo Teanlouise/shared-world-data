@@ -1,6 +1,8 @@
+[Back to Home](https://teanlouise.github.io)
+
 ![data_shared](https://user-images.githubusercontent.com/19520346/69123547-61a5bc80-0aed-11ea-983c-2a2bd3ab0888.PNG)
 
-[Overview](https://teanlouise.github.io/shared-world)     |     [Develop](https://teanlouise.github.io/shared-world/develop)    |  [Deploy](https://teanlouise.github.io/shared-world/deploy)    |   [Data](https://teanlouise.github.io/shared-world-data)                                          [Back to Home](https://teanlouise.github.io)
+[Overview](https://teanlouise.github.io/shared-world) | [Develop](https://teanlouise.github.io/shared-world/develop) |  [Deploy](https://teanlouise.github.io/shared-world/deploy) | Data
 
 This is all of the Big Data aspects of the shared-world project. This includes:
 - **[Data Analysis](https://teanlouise.github.io/shared-world-data/src/data_analysis)**: scala code and zeppelin notebook of Spark programming
