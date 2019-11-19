@@ -46,9 +46,13 @@ See [shared-world-frontend](https://teanlouise.github.io/shared-world-frontend) 
 
 ### Database - Cloud SQL
 
+
+# Database
+
 ![database](https://user-images.githubusercontent.com/19520346/69109793-833e7e00-0ac4-11ea-835f-0c890cde4803.png)
 
-[Connect Django to Google Cloud SQL](https://stackoverflow.com/questions/19086517/connect-django-to-google-cloud-sql) with a PostgreSQL instance to [deploy Django to Google App Engine](https://medium.com/@BennettGarner/deploying-a-django-application-to-google-app-engine-f9c91a30bd35)
+[Connect Django to Google Cloud SQL](https://stackoverflow.com/questions/19086517/connect-django-to-google-cloud-sql) with a PostgreSQL instance to [deploy Django to Google App Engine](https://medium.com/@BennettGarner/deploying-a-django-application-to-google-app-engine-f9c91a30bd35). The PostgreSQL instance has read replicas and high availability to replicate that of a cluster environment for distributed data sharing.
+
 - Go to Cloud SQL console
 -	Create Postgres instance (shared-world-beta, contiki123)
 -	Go to Cloud SDK
@@ -60,8 +64,8 @@ gcloud services enable sqladmin
 ```
 gcloud sql instances describe shared-world-beta
 ```
--	Install proxy onto computer and resave as cloud_sql_proxy.exe 
--	Open new powershell  and connect to local computer
+-	Install CloudSQL proxy onto computer and resave as cloud_sql_proxy.exe 
+-	Open termindal and use proxy to run locally
 ```
 .\cloud_sql_proxy.exe –instances=”shared-world:us-central1:shared-world-beta”=tcp:5432
 ```
@@ -85,10 +89,16 @@ python manage.py createsuperuser
 
 ### File Storage - Cloud Storage
 
+
+# Storage
+
 ![storage](https://user-images.githubusercontent.com/19520346/69108304-f09be000-0abf-11ea-8680-6530ecb30c38.png)
 
+All static and media files are on Google Cloud Storage (for this application this was the best choice over a DFS)
+
 **Media:**
-Use [Django Storage](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html) to allow media files to be served from Google Cloud Storage
+Use [Django Storage](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html) to allow media files to be served from Google Cloud Storage. Media images are stored in seperate folder for each app (post_pics, country_pics and profile_pics).
+
 -	Go to GCP console and create service account under IAM 
 -	Download json file
 -	Create a  bucket for  media (shared-world-media)
@@ -97,7 +107,7 @@ Use [Django Storage](https://django-storages.readthedocs.io/en/latest/backends/g
 ```
 pip install django-storage
 ```
--	Add to Django settings.py
+-	Add GCS details to Django settings.py with it as the default file storage
 
 **Static:**
 -	Create bucket in google cloud (shared-world-static)
@@ -108,17 +118,19 @@ pip install django-storage
 
 ![backend](https://user-images.githubusercontent.com/19520346/69108485-83d51580-0ac0-11ea-92ae-5e2776a04f54.png)
 
+ Django was deployed on [Google Flexible Environment](https://cloud.google.com/python/django/flexible-environment) with some helpful [guidelines](https://codeburst.io/beginners-guide-to-deploying-a-django-postgresql-project-on-google-cloud-s-flexible-app-engine-e3357b601b91). 
+
 When deployed it is converted to a docker image and run on a default of 2 VM instances. It looks at the applications app.yaml file for the relevant information (eg. Runtime environment, environment variables, etc).
 
-Django was deployed on [Google Flexible Environment](https://cloud.google.com/python/django/flexible-environment) with some helpful [guidelines](https://codeburst.io/beginners-guide-to-deploying-a-django-postgresql-project-on-google-cloud-s-flexible-app-engine-e3357b601b91).
 -	Create project on app engine [shared-world]
 -	Add backend website and localhost to ALLOWED_HOSTS
--	Get service account credentials
+-	Create service account credentials on GCP and add to settings
 -	Import service account into settings.py – shared_world
 ```
 from google.oauth2 import service_account
 ```
--	Install CloudSDK
+- Need to create requirements.txt and yaml file
+-	Install CloudSDK and deploy
 ```
 gcloud init
 gcloud auth application-default login
