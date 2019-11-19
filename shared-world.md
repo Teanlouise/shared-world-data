@@ -1,28 +1,28 @@
 ![shared-world](https://user-images.githubusercontent.com/19520346/69109421-6eadb600-0ac3-11ea-8152-1fcff05d2aca.PNG)
 
-# Overview
+# OVERVIEW
 
-## Purpose
+### Purpose
 A cloud application solution for overtourism and promoting responsible travel by providing a platform where travellers explore destinations using a map displaying tourist-to-local ratios and view blogs filtered by their interests. It is a platform where responsible, conscientious travellers can be made. 
 
-## Goals
+### Goals
 1.	educate travellers
 2.	show only relevant posts
 3.	informative map
 4.	improve quality of travel blogs
 
-## Technologies
-The application was written in Django and React, deployed on Google App Engine through docker and Firebase respectively, the database hosted on Cloud SQL and the file storage on Cloud Storage. BigQuery was used to query data from the World Bank dataset, Apache Spark clusters were managed via Dataproc in which a Scala program was run using SparkSQL, as well as an Apache Zeppelin notebook for data analysis using Scala and a Jupyter notebook to create a linear regression model with PySpark. 
-
+### Technologies
 ![tech](https://user-images.githubusercontent.com/19520346/69107831-6dc65580-0abe-11ea-9e97-77a83787938f.png)
 
-## Workflow
+The application was written in Django and React, deployed on Google App Engine through docker and Firebase respectively, the database hosted on Cloud SQL and the file storage on Cloud Storage. BigQuery was used to query data from the World Bank dataset, Apache Spark clusters were managed via Dataproc in which a Scala program was run using SparkSQL, as well as an Apache Zeppelin notebook for data analysis using Scala and a Jupyter notebook to create a linear regression model with PySpark. 
+
+### Workflow
 ![workflow](https://user-images.githubusercontent.com/19520346/69107833-6ef78280-0abe-11ea-97e9-7345c40b4363.png)
 
-# Part 1 - Develop
+# PART 1 - DEVELOP
 ![part1](https://user-images.githubusercontent.com/19520346/69107835-7028af80-0abe-11ea-92c0-1b3985f750de.png)
 
-## Getting started
+### Getting started
 
 **Version control**
 -	Init repository on gitkraken
@@ -31,20 +31,23 @@ The application was written in Django and React, deployed on Google App Engine t
 **Setup VisualStudio**
 -	Go to VisualStudio and open project from folder now on computer
 
-## Backend - Django
+### Backend - Django
 See [shared-world-backend](https://teanlouise.github.io/shared-world-backend) for more information.
 
-## Frontend - React
+### Frontend - React
 See [shared-world-frontend](https://teanlouise.github.io/shared-world-frontend) for more information.
 
-# Part 2 - Deploy
+# PART 2 - DEPLOY
 ![part2](https://user-images.githubusercontent.com/19520346/69107982-f513c900-0abe-11ea-8cd3-2a6962e6b1cb.png)
 
-## Getting Started
+### Getting Started
 
 - Get Cloud SDK
 
-## Database - Cloud SQL
+### Database - Cloud SQL
+
+![database](https://user-images.githubusercontent.com/19520346/69109793-833e7e00-0ac4-11ea-835f-0c890cde4803.png)
+
 [Connect Django to Google Cloud SQL](https://stackoverflow.com/questions/19086517/connect-django-to-google-cloud-sql) with a PostgreSQL instance to [deploy Django to Google App Engine](https://medium.com/@BennettGarner/deploying-a-django-application-to-google-app-engine-f9c91a30bd35)
 - Go to Cloud SQL console
 -	Create Postgres instance (shared-world-beta, contiki123)
@@ -80,7 +83,9 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-## File Storage - Cloud Storage
+### File Storage - Cloud Storage
+
+![storage](https://user-images.githubusercontent.com/19520346/69108304-f09be000-0abf-11ea-8680-6530ecb30c38.png)
 
 **Media:**
 Use [Django Storage](https://django-storages.readthedocs.io/en/latest/backends/gcloud.html) to allow media files to be served from Google Cloud Storage
@@ -99,9 +104,10 @@ pip install django-storage
 -	Make bucket public
 -	Add to settings.py
 
-![storage](https://user-images.githubusercontent.com/19520346/69108304-f09be000-0abf-11ea-8680-6530ecb30c38.png)
+### Backend - Google App Engine
 
-## Backend - Google App Engine
+![backend](https://user-images.githubusercontent.com/19520346/69108485-83d51580-0ac0-11ea-92ae-5e2776a04f54.png)
+
 When deployed it is converted to a docker image and run on a default of 2 VM instances. It looks at the applications app.yaml file for the relevant information (eg. Runtime environment, environment variables, etc).
 
 Django was deployed on [Google Flexible Environment](https://cloud.google.com/python/django/flexible-environment) with some helpful [guidelines](https://codeburst.io/beginners-guide-to-deploying-a-django-postgresql-project-on-google-cloud-s-flexible-app-engine-e3357b601b91).
@@ -120,9 +126,9 @@ gcloud app deploy
 ```
 -	Check that running once finished with provided url (shared-world.appspot.com)
 
-![backend](https://user-images.githubusercontent.com/19520346/69108485-83d51580-0ac0-11ea-92ae-5e2776a04f54.png)
+### Frontend - Google Firebase
+![frontend](https://user-images.githubusercontent.com/19520346/69108491-8c2d5080-0ac0-11ea-815b-a0c3ead9c517.png)
 
-## Frontend - Google Firebase
 -	Go to firebase console and create a project
 -	Install Firebase tools
 ```
@@ -141,9 +147,7 @@ npm run build
 firebase deploy
 ```
 
-![frontend](https://user-images.githubusercontent.com/19520346/69108491-8c2d5080-0ac0-11ea-815b-a0c3ead9c517.png)
-
-# Part 3 - Data
+# PART 3 - DATA
 
 ![part_3_data](https://user-images.githubusercontent.com/19520346/69108540-b121c380-0ac0-11ea-9577-55a4eae5fd28.png)
 
