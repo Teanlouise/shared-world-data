@@ -1,3 +1,5 @@
+[Overview](https://teanlouise.github.io/shared-world)     |     [Develop](https://teanlouise.github.io/shared-world/develop)    |  [Deploy](https://teanlouise.github.io/shared-world/deploy)    |   [Data](https://teanlouise.github.io/shared-world-data)
+
 # LINEAR REGRESSION MODEL
 
 ![linear_regression](https://user-images.githubusercontent.com/19520346/69103645-aca1de80-0ab1-11ea-9e13-6cbb79e203f6.png)
