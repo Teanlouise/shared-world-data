@@ -10,17 +10,17 @@ This is all of the Big Data aspects of the shared-world project. This includes:
 
 ![part_3_data](https://user-images.githubusercontent.com/19520346/69108540-b121c380-0ac0-11ea-9577-55a4eae5fd28.png)
 
-**Getting Started**
+### Getting Started
 
-(1) Setup Dataproc cluster
+**(1) Setup Dataproc cluster**
 
 ![dataproc](https://user-images.githubusercontent.com/19520346/69104843-651d5180-0ab5-11ea-9b37-7b2d4aba4a19.png)
 
-(2) [Enable BigQuery API](https://data.worldbank.org/indicator/SP.POP.TOTL)
+**(2) [Enable BigQuery API](https://data.worldbank.org/indicator/SP.POP.TOTL)**
 
 ![bigquery](https://user-images.githubusercontent.com/19520346/69105029-e2e15d00-0ab5-11ea-8dd3-35ff254e66ea.png)
 
-(3) Dataproc Cluster for notebooks
+**(3) Dataproc Cluster for notebooks**
 -	Create cluster on Dataproc
 -	Enable component gateway
 -	Add path to bucket for outputs
