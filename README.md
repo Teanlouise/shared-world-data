@@ -1,3 +1,5 @@
+![data_shared](https://user-images.githubusercontent.com/19520346/69123547-61a5bc80-0aed-11ea-983c-2a2bd3ab0888.PNG)
+
 This is all of the Big Data aspects of the shared-world project.
 
 **Getting Started**
