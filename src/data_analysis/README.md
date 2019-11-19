@@ -1,3 +1,5 @@
+[Overview](https://teanlouise.github.io/shared-world)     |     [Develop](https://teanlouise.github.io/shared-world/develop)    |  [Deploy](https://teanlouise.github.io/shared-world/deploy)    |   [Data](https://teanlouise.github.io/shared-world-data)
+
 # DATA ANALYSIS 
 
 ![data_analysis](https://user-images.githubusercontent.com/19520346/69103639-a875c100-0ab1-11ea-8ec9-6a834d80fee8.png)
