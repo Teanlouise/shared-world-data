@@ -20,12 +20,13 @@ Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/ind
 
 **(2) Create and save table on Cloud Storage:**
 - Create a table using ratio view and filter by the latest year (2017) and order by the highest percentage in descending.
-- Save table by exporting as csv to Cloud Storage
+- Save table by exporting as csv to Cloud Storage _(snippet below)_
+
+![ratiooutput](https://user-images.githubusercontent.com/19520346/69106523-5dac7700-0aba-11ea-9d28-c799cfe8ab68.png)
 
 **(3) Display with GeoChart Map:**
 - Enable GeoChartAPI 
 - Enter data in [Google GeoChart in React](https://react-google-charts.com/data-sources/from-api)
 - Display [GeoChart](https://developers.google.com/chart/interactive/docs/gallery/geochart) map with countries coloured according to ratio
 
-![ratiooutput](https://user-images.githubusercontent.com/19520346/69106523-5dac7700-0aba-11ea-9d28-c799cfe8ab68.png)
-_snippet_
+![map](https://user-images.githubusercontent.com/19520346/69467110-8353bc00-0deb-11ea-8ea3-36b940520a19.png)
