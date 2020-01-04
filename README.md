@@ -1,6 +1,6 @@
 [Back to Home](https://teanlouise.github.io)
 
-![data_shared](https://user-images.githubusercontent.com/19520346/69123547-61a5bc80-0aed-11ea-983c-2a2bd3ab0888.PNG)
+![sw_data](https://user-images.githubusercontent.com/19520346/71760718-99d25480-2f0d-11ea-8732-72705761222a.PNG)
 
 [Overview](https://teanlouise.github.io/shared-world) | [Develop](https://teanlouise.github.io/shared-world/develop) |  [Deploy](https://teanlouise.github.io/shared-world/deploy) | Data
 
