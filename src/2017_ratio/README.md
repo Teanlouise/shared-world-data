@@ -2,7 +2,7 @@
 
 # TOURIST-TO-RESIDENT RATIO 
 
-![tourist_map](https://user-images.githubusercontent.com/19520346/69103727-e2df5e00-0ab1-11ea-9223-63bd3d42d1a0.png)
+![tourist_map](/images/sw_ratio_title.PNG)
 
 _World Bank, Google BigQuery, Google Cloud Storage, GoogleMapsAPI-GeoChart_
 
@@ -22,11 +22,13 @@ Use BigQuery to query [World Bank public dataset](https://data.worldbank.org/ind
 - Create a table using ratio view and filter by the latest year (2017) and order by the highest percentage in descending.
 - Save table by exporting as csv to Cloud Storage _(snippet below)_
 
-![ratiooutput](https://user-images.githubusercontent.com/19520346/69106523-5dac7700-0aba-11ea-9d28-c799cfe8ab68.png)
+![ratio_ouput](/images/sw_ratio_output.PNG)
 
 **(3) Display with GeoChart Map:**
 - Enable GeoChartAPI 
 - Enter data in [Google GeoChart in React](https://react-google-charts.com/data-sources/from-api)
 - Display [GeoChart](https://developers.google.com/chart/interactive/docs/gallery/geochart) map with countries coloured according to ratio
 
-![map](https://user-images.githubusercontent.com/19520346/69467110-8353bc00-0deb-11ea-8ea3-36b940520a19.png)
+
+
+![ratio_map](/images/sw_ratio_map.JPG)

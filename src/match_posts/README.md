@@ -2,7 +2,7 @@
 
 # MATCH POSTS TO USER INTERESTS
 
-![match_posts](https://user-images.githubusercontent.com/19520346/69103654-b297bf80-0ab1-11ea-8061-a6bf9b437f27.png)
+![sw_matchposts_title](/images/sw_matchposts_title.PNG)
 
 _Google CloudSQL, IntelliJ, Google Cloud Storage, Google Dataproc, JDBC, Scala, SparkSQL_
 
@@ -60,7 +60,7 @@ Go to Dataproc cluster and [Submit job](https://cloud.google.com/dataproc/docs/g
 -	Enter any [arguments](https://stackoverflow.com/questions/36024565/how-do-i-pass-program-argument-to-main-function-in-running-spark-submit-with-a-j) for program (23)
 -	Under additional jar files put the address of the jdbc driver (gs://shared-world-dataproc/postgresql-driver.jar)
 
-![submitjob](https://user-images.githubusercontent.com/19520346/69105909-803d9080-0ab8-11ea-8f92-5a67f8c8fc75.png)
+![sw_matchposts_submitjob](/images/sw_matchposts_submitjob.PNG)
 
 **(6) Ouptput:**
 Ouput as unique single JSON file to GCS as 'order/user/country' in Google Cloud Storage bucket
@@ -68,7 +68,7 @@ Ouput as unique single JSON file to GCS as 'order/user/country' in Google Cloud 
 - [Save Spark datafram to single csv](https://gist.github.com/dmpetrov/a4a5dc2cc8719619410e37dedde5130e)
 - [Scala write to file with variable name](https://stackoverflow.com/questions/49681781/spark-scala-write-to-file-with-variable-name)
 
-![joboutput](https://user-images.githubusercontent.com/19520346/69105912-82075400-0ab8-11ea-943b-4555f62eab01.png)
+![sw_matchposts_joboutput](/images/sw_matchposts_joboutput.PNG)
 
 ### Google Dataproc examples:
 

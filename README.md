@@ -1,6 +1,6 @@
 [Back to Home](https://teanlouise.github.io)
 
-![sw_data](https://user-images.githubusercontent.com/19520346/71760718-99d25480-2f0d-11ea-8732-72705761222a.PNG)
+![sw_data](./images/sw_data_title.PNG)
 
 [Overview](https://teanlouise.github.io/shared-world) | [Develop](https://teanlouise.github.io/shared-world/develop) |  [Deploy](https://teanlouise.github.io/shared-world/deploy) | Data
 
@@ -10,17 +10,17 @@ This is all of the Big Data aspects of the shared-world project. This includes:
 - **[Map of tourist-resident ratio](https://teanlouise.github.io/shared-world-data/src/2017_ratio):** the sql queries and table for the interactive map
 - **[Linear Regression Model](https://teanlouise.github.io/shared-world-data/src/linear_regression):** pyspark code and jupyter notebook to create linear regressional model using SparkML
 
-![part_3_data](https://user-images.githubusercontent.com/19520346/69108540-b121c380-0ac0-11ea-9577-55a4eae5fd28.png)
+![sw_data_workflow](./images/sw_data_workflow.PNG)
 
 ### Getting Started
 
 **(1) Setup Dataproc cluster**
 
-![dataproc](https://user-images.githubusercontent.com/19520346/69104843-651d5180-0ab5-11ea-9b37-7b2d4aba4a19.png)
+![sw_data_setup_1](./images/sw_data_setup_1.PNG)
 
 **(2) [Enable BigQuery API](https://data.worldbank.org/indicator/SP.POP.TOTL)**
 
-![bigquery](https://user-images.githubusercontent.com/19520346/69105029-e2e15d00-0ab5-11ea-8dd3-35ff254e66ea.png)
+![sw_data_setup_2](./images/sw_data_setup_2.PNG)
 
 **(3) Dataproc Cluster for notebooks**
 -	Create cluster on Dataproc
@@ -30,4 +30,4 @@ This is all of the Big Data aspects of the shared-world project. This includes:
 -	Once created created go to Web Interface tab and select notebook
 -	Once open select the desired kernel
 
-![zeppelin](https://user-images.githubusercontent.com/19520346/69106832-4f128f80-0abb-11ea-9681-d8b6f26d0b68.png)
+![sw_data_setup_3](./images/sw_data_setup_3.PNG)
